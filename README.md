@@ -181,26 +181,7 @@ Níže je uveden diagram architektury, který zobrazuje propojení jednotlivých
 
 Níže je uveden diagram architektury, který zobrazuje propojení jednotlivých komponent a jejich interakce:
 
-```mermaid
-graph TD
-    subgraph "DigiMedic FHIR Backend"
-        A[FHIR REST API] <--> B[Identity & Access]
-        A --> C[Subscriptions]
-        A --> D[Data Storage]
-    end
-    C --> D
-
-    subgraph "External Systems"
-        E[eHealth]
-        F[eRecept]
-        G[Wearable Devices]
-        H[Third-Party Apps]
-    end
-
-    A --> E
-    A --> F
-    A --> G
-    A --> H
+![DigiMedci EHR backend](https://i.ibb.co/jbSxHr5/Digi-Medic-EHR-backend.png)
 
 
 
