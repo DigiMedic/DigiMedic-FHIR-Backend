@@ -169,33 +169,38 @@ jednotlivých komponent a jejich interakce:
 
 Níže je uveden diagram architektury, který zobrazuje propojení jednotlivých komponent a jejich interakce:
 
-```plantuml
-@startuml
-skinparam monochrome true
+# DigiMedic FHIR Backend
 
-title DigiMedic FHIR Backend Architecture
+![Cover Image](https://i.ibb.co/s5Pn6NL/DALL-E-2024-07-15-14-38-37-Create-a-wide-cover-image-for-a-digital-healthcare-themed-2-D-pixel-art-g.webp)
 
-package "DigiMedic FHIR Backend" {
-  [FHIR REST API] <--> [Identity & Access]
-  [FHIR REST API] --> [Subscriptions]
-  [FHIR REST API] --> [Data Storage]
-}
+## Úvod
 
-[Subscriptions] --> [Data Storage]
+**DigiMedic FHIR Backend** je základní vrstva pro výměnu a zpracování zdravotnických dat. Naše platforma nabízí bezpečnou, škálovatelnou a interoperabilní infrastrukturu pro zdravotnické organizace a systémy.
 
-package "External Systems" {
-  [eHealth]
-  [eRecept]
-  [Wearable Devices]
-  [Third-Party Apps]
-}
+## Architektura
 
-[FHIR REST API] --> [eHealth]
-[FHIR REST API] --> [eRecept]
-[FHIR REST API] --> [Wearable Devices]
-[FHIR REST API] --> [Third-Party Apps]
+Níže je uveden diagram architektury, který zobrazuje propojení jednotlivých komponent a jejich interakce:
 
-@enduml
+```mermaid
+graph TD
+    subgraph "DigiMedic FHIR Backend"
+        A[FHIR REST API] <--> B[Identity & Access]
+        A --> C[Subscriptions]
+        A --> D[Data Storage]
+    end
+    C --> D
+
+    subgraph "External Systems"
+        E[eHealth]
+        F[eRecept]
+        G[Wearable Devices]
+        H[Third-Party Apps]
+    end
+
+    A --> E
+    A --> F
+    A --> G
+    A --> H
 
 
 
