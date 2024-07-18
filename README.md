@@ -156,31 +156,47 @@ DigiMedic FHIR Backend je navržen tak, aby splňoval různé národní a evrops
 
 DigiMedic FHIR Backend slouží jako základní vrstva pro výměnu a zpracování zdravotnických dat. Níže je uveden diagram architektury, který zobrazuje propojení 
 jednotlivých komponent a jejich interakce:
-      +----------------------------------------------------+
-      |                    DigiMedic FHIR Backend          |
-      |                                                    |
-      |  +-------------------+     +-------------------+   |
-      |  |   FHIR REST API   |<----|  Identity & Access |   |
-      |  +-------------------+     +-------------------+   |
-      |          ^                           ^              |
-      |          |                           |              |
-      |  +-------------------+     +-------------------+   |
-      |  |    Subscriptions  |     |    Data Storage   |   |
-      |  +-------------------+     +-------------------+   |
-      +--------------------^-------------------------------+
-                           |
-                           v
-      +----------------------------------------------------+
-      |                    External Systems                |
-      |  +-------------------+     +-------------------+   |
-      |  |      eHealth      |     |      eRecept      |   |
-      |  +-------------------+     +-------------------+   |
-      |          ^                           ^              |
-      |          |                           |              |
-      |  +-------------------+     +-------------------+   |
-      |  |  Wearable Devices |     |     Third-Party   |   |
-      |  +-------------------+     |       Apps        |   |
-      +----------------------------------------------------+
+
+ # DigiMedic FHIR Backend
+
+![Cover Image](https://i.ibb.co/s5Pn6NL/DALL-E-2024-07-15-14-38-37-Create-a-wide-cover-image-for-a-digital-healthcare-themed-2-D-pixel-art-g.webp)
+
+## Úvod
+
+**DigiMedic FHIR Backend** je základní vrstva pro výměnu a zpracování zdravotnických dat. Naše platforma nabízí bezpečnou, škálovatelnou a interoperabilní infrastrukturu pro zdravotnické organizace a systémy.
+
+## Architektura
+
+Níže je uveden diagram architektury, který zobrazuje propojení jednotlivých komponent a jejich interakce:
+
+```plantuml
+@startuml
+skinparam monochrome true
+
+title DigiMedic FHIR Backend Architecture
+
+package "DigiMedic FHIR Backend" {
+  [FHIR REST API] <--> [Identity & Access]
+  [FHIR REST API] --> [Subscriptions]
+  [FHIR REST API] --> [Data Storage]
+}
+
+[Subscriptions] --> [Data Storage]
+
+package "External Systems" {
+  [eHealth]
+  [eRecept]
+  [Wearable Devices]
+  [Third-Party Apps]
+}
+
+[FHIR REST API] --> [eHealth]
+[FHIR REST API] --> [eRecept]
+[FHIR REST API] --> [Wearable Devices]
+[FHIR REST API] --> [Third-Party Apps]
+
+@enduml
+
 
 
 
