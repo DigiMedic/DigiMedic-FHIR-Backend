@@ -1,0 +1,76 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #1B4D6A;
+  --ifm-color-primary-dark: #184560;
+  --ifm-color-primary-darker: #174159;
+  --ifm-color-primary-darkest: #13364A;
+  --ifm-color-primary-light: #1E5574;
+  --ifm-color-primary-lighter: #1F597B;
+  --ifm-color-primary-lightest: #23648A;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  /* DigiMedic color palette */
+  --digimedic-dark-blue: #1B4D6A;
+  --digimedic-medium-blue: #5B8A9A;
+  --digimedic-light-blue: #5BA2C2;
+  --digimedic-very-light-blue: #A8D4E1;
+  --digimedic-lightest-blue: #E7F5F8;
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-color-primary: #5BA2C2;
+  --ifm-color-primary-dark: #4A96B8;
+  --ifm-color-primary-darker: #448EAF;
+  --ifm-color-primary-darkest: #387590;
+  --ifm-color-primary-light: #6CADCA;
+  --ifm-color-primary-lighter: #77B4CE;
+  --ifm-color-primary-lightest: #96C5D9;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Typography */
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Raleway:wght@400;600&family=Open+Sans&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Space Mono', monospace;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+.alternate-paragraph {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Custom styles */
+.navbar {
+  background-color: var(--digimedic-dark-blue);
+}
+
+.footer {
+  background-color: var(--digimedic-medium-blue);
+}
+
+.hero {
+  background-color: var(--digimedic-lightest-blue);
+}
+
+.button {
+  background-color: var(--digimedic-light-blue);
+  color: white;
+}
+
+.button:hover {
+  background-color: var(--digimedic-medium-blue);
+}
+
+/* Add more custom styles as needed */

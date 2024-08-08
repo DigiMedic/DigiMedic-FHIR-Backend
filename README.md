@@ -55,6 +55,56 @@ Vybudovat bezpečnou a interoperabilní platformu pro výměnu zdravotnických d
 - **Monitorování a auditování**:
   - Real-time monitoring a centralized logging pro zajištění bezpečnosti a výkonu systému.
 
+## Dokumentace
+
+Kompletní dokumentace DigiMedic FHIR Backend je dostupná v adresáři `digimedic-docs`. Dokumentace je vytvořena pomocí nástroje Docusaurus a obsahuje následující sekce:
+
+- [Úvod](digimedic-docs/docs/uvod.md)
+- [Instalace a nastavení](digimedic-docs/docs/instalace-a-nastaveni.md)
+- [Základní koncepty](digimedic-docs/docs/zakladni-koncepty.md)
+- [API Reference](digimedic-docs/docs/api-reference.md)
+- [Příklady použití](digimedic-docs/docs/priklady-pouziti.md)
+- [Vizuální identita](digimedic-docs/docs/vizualni-identita.md)
+
+Dokumentace byla aktualizována tak, aby odrážela vizuální identitu DigiMedic, včetně:
+
+- Přizpůsobení barevné palety a typografie
+- Použití loga DigiMedic a faviconu
+- Vytvoření vlastních SVG ikon pro klíčové funkce
+- Aktualizace hlavní stránky a navigace
+- Přidání stránky s informacemi o vizuální identitě projektu
+
+### Struktura dokumentace
+
+Dokumentace je strukturována následovně:
+
+- `digimedic-docs/`
+  - `docs/`: Obsahuje hlavní dokumentační soubory
+  - `src/`: Zdrojové soubory pro React komponenty a CSS
+  - `static/`: Statické soubory jako obrázky a ikony, včetně loga a faviconu
+  - `docusaurus.config.ts`: Konfigurační soubor pro Docusaurus
+
+### Spuštění dokumentace lokálně
+
+Pro spuštění dokumentace lokálně následujte tyto kroky:
+
+1. Přejděte do adresáře s dokumentací:
+   ```
+   cd digimedic-docs
+   ```
+
+2. Nainstalujte závislosti:
+   ```
+   npm install
+   ```
+
+3. Spusťte vývojový server:
+   ```
+   npm start
+   ```
+
+Dokumentace bude dostupná na adrese `http://localhost:3000`.
+
 ## Důvody, cíle a motivace
 
 ### Důvody
@@ -87,26 +137,16 @@ Při vývoji DigiMedic FHIR Backend jsme se inspirovali a částečně vychází
 
 ## Standardy a Shoda
 
-DigiMedic FHIR Backend je navržen tak, aby splňoval různé národní a evropské standardy, které zajišťují interoperabilitu, bezpečnost a ochranu dat. Níže jsou uvedeny klíčové standardy a dokumenty o shodě:
-
-| Logo | Název | Popis |
-|------|-------|-------|
-| ![HL7 FHIR](link_na_logo) | [HL7 FHIR](standards/HL7_FHIR.md) | Přehled a implementace standardu HL7 FHIR pro výměnu zdravotnických informací. |
-| ![HL7 CDA](link_na_logo) | [HL7 CDA](standards/HL7_CDA.md) | Přehled a implementace standardu HL7 CDA pro strukturované zdravotnické dokumenty. |
-| ![DICOM](link_na_logo) | [DICOM](standards/DICOM.md) | Přehled a implementace standardu DICOM pro lékařská zobrazovací data. |
-| ![SSL/TLS](link_na_logo) | [SSL/TLS](standards/SSL_TLS.md) | Přehled a implementace protokolů SSL/TLS pro zabezpečenou komunikaci. |
-| ![AES-256](link_na_logo) | [AES-256](standards/AES_256.md) | Přehled a implementace šifrování AES-256 pro zabezpečení dat. |
-| ![GDPR](link_na_logo) | [GDPR](standards/GDPR.md) | Přehled souladu s GDPR a jak DigiMedic FHIR Backend zajišťuje ochranu dat. |
-| ![NCPeH API](link_na_logo) | [NCPeH API](standards/NCPeH_API.md) | Přehled a implementace NCPeH API pro národní integraci eHealth. |
-| ![CMS 2.0](link_na_logo) | [CMS 2.0](standards/CMS_2.0.md) | Přehled a implementace CMS 2.0 pro bezpečnou výměnu dat ve veřejné správě. |
-| ![ISO 27001](link_na_logo) | [ISO 27001](standards/ISO_27001.md) | Přehled souladu s ISO 27001 a proces certifikace. |
-| ![Legislativní Požadavky](link_na_logo) | [Legislativní Požadavky](standards/Legislative_Requirements.md) | Přehled národních legislativních požadavků pro zdravotnické služby a dokumentaci v České republice. |
+DigiMedic FHIR Backend je navržen tak, aby splňoval různé národní a evropské standardy, které zajišťují interoperabilitu, bezpečnost a ochranu dat. Podrobné informace o standardech a shodě naleznete v [dokumentaci](digimedic-docs/docs/zakladni-koncepty.md#standardy-a-legislativa).
 
 ## Tech Stack
 
-### Backend a databáze
-| Technologie   | Popis                                                                | Důvod použití                                                             |
-|---------------|----------------------------------------------------------------------|---------------------------------------------------------------------------|
-| **FHIR REST API**  | Poskytuje standardizované rozhraní pro manipulaci se zdravotnickými daty. | Zajišťuje interoperabilitu a konzistenci dat.                             |
-| **Supabase**  | Open-source alternativa Firebase, poskytující real-time databáze, autentizaci a API služby. | Real-time synchronizace databází a uživatelská autentizace, klíčové pro správu pacientských záznamů a zabezpečený přístup. |
-| **Authentik** | Open-source### Aktualizovaný README.md pro DigiMedic FHIR Backend
+Podrobné informace o použitých technologiích naleznete v [dokumentaci](digimedic-docs/docs/zakladni-koncepty.md#technologický-stack).
+
+## Kontakt
+
+Pro více informací nebo v případě dotazů nás kontaktujte na info@digimedic.cz.
+
+---
+
+© 2023 DigiMedic. Všechna práva vyhrazena.
