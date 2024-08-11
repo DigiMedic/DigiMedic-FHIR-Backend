@@ -69,6 +69,7 @@ Projekt má následující hlavní komponenty:
     - `react/`: React komponenty
     - `server/`: Serverová část
   - `examples/`: Ukázkové aplikace a demonstrace funkcí
+    - `foomedical/`: Ukázková aplikace zdravotnického zařízení
   - `docs/`: Dokumentace (včetně české verze)
 
 ## Klíčové funkcionality
@@ -82,6 +83,107 @@ Projekt má následující hlavní komponenty:
 7. Analýza zdravotnických dat
 8. Integrace s externími systémy a registry
 9. Plná podpora EHDS a přeshraniční výměny dat
+
+## Ukázková aplikace Foo Medical
+
+Foo Medical je ukázková aplikace zdravotnického zařízení, která demonstruje možnosti platformy Medplum. Klíčové vlastnosti:
+
+- Open-source a připravená k použití
+- Využívá Medplum jako backend
+- Obsahuje funkce jako registrace pacientů, zdravotní záznamy, komunikace pacient-lékař, plány péče a plánování pacientů
+- Všechna data jsou reprezentována ve formátu FHIR
+- Navržena pro snadné přizpůsobení potřebám konkrétního zdravotnického zařízení
+
+Struktura aplikace Foo Medical:
+
+- Využívá knihovnu @medplum/react pro integraci s Medplum backendem
+- Používá React Router pro správu navigace
+- Má oddělené stránky pro přihlášení (SignInPage) a registraci (RegisterPage)
+- Obsahuje komponentu LandingPage pro úvodní stránku
+- Po přihlášení používá komponentu Router pro správu navigace v aplikaci
+- Využívá AppShell z knihovny @mantine/core pro základní rozvržení aplikace
+- Implementuje ErrorBoundary a Suspense pro lepší uživatelskou zkušenost a zpracování chyb
+
+### Komponenta pro zdravotní záznamy (HealthRecord)
+
+Klíčové vlastnosti:
+
+- Používá Mantine UI knihovnu pro rozvržení
+- Implementuje boční menu s kategoriemi zdravotních záznamů (laboratorní výsledky, léky, dotazníky, očkování, životní funkce)
+- Využívá React Router pro zobrazení obsahu jednotlivých podstránek
+- Implementuje Suspense a Loading komponentu pro lepší UX
+
+Návrhy na úpravy pro DigiMedic FHIR Backend:
+
+1. Lokalizace do češtiny
+2. Přidání kategorií specifických pro české zdravotnictví
+3. Integrace s českými FHIR profily
+4. Podpora pro elektronické recepty (eRecept)
+5. Integrace s národními registry (ISIN, NZIS)
+6. Sekce pro správu souhlasů pacienta (GDPR)
+
+### Komponenta pro zprávy (Messages)
+
+Klíčové vlastnosti:
+
+- Využívá Medplum pro správu komunikace mezi pacientem a lékařem
+- Používá FHIR resource Communication pro reprezentaci zpráv
+- Implementuje funkce pro odesílání a přijímání zpráv
+- Využívá BaseChat komponentu z @medplum/react
+- Implementuje zpracování chyb a notifikace
+
+Návrhy na úpravy pro DigiMedic FHIR Backend:
+
+1. Lokalizace do češtiny včetně chybových hlášek
+2. Podpora pro české znaky a diakritiku
+3. Přidání typů komunikace specifických pro české zdravotnictví
+4. Integrace s českými FHIR profily pro Communication resource
+5. Implementace dodatečných bezpečnostních opatření (GDPR)
+6. Možnost přikládání souborů nebo odkazů na zdravotní záznamy
+7. Integrace s národními systémy pro zdravotnickou komunikaci
+
+### Komponenta pro plány péče (CarePlanPage)
+
+Klíčové vlastnosti:
+
+- Používá Mantine UI knihovnu pro základní rozvržení
+- Implementuje boční menu s položkou "Action Items"
+- Využívá React Router pro zobrazení obsahu podstránek
+- Implementuje Suspense a Loading komponentu pro lepší UX
+
+Návrhy na úpravy pro DigiMedic FHIR Backend:
+
+1. Lokalizace do češtiny
+2. Rozšíření menu o položky relevantní pro české zdravotnictví:
+   - Dlouhodobé plány péče
+   - Krátkodobé plány péče
+   - Preventivní prohlídky
+   - Rehabilitační plány
+3. Integrace s českými FHIR profily pro plány péče
+4. Podpora pro zobrazení a práci s doporučeními od různých specialistů
+5. Integrace s národními registry a systémy souvisejícími s plány péče
+6. Sekce pro správu souhlasů pacienta s plány péče (GDPR)
+7. Funkcionalita pro sdílení plánů péče mezi různými poskytovateli zdravotní péče
+
+## Hlavní body pro přizpůsobení Foo Medical pro DigiMedic FHIR Backend
+
+1. Lokalizace: Překlad všech komponent do češtiny, včetně uživatelského rozhraní, chybových hlášek a notifikací.
+
+2. Integrace s českými FHIR profily: Implementace a integrace českých FHIR profilů pro všechny relevantní zdroje dat (pacienti, zdravotní záznamy, komunikace, plány péče atd.).
+
+3. Integrace s národními systémy: Implementace rozhraní pro integraci s klíčovými českými zdravotnickými systémy jako eRecept, ISIN, NZIS a další.
+
+4. Rozšíření funkcionality: Přidání nových funkcí a kategorií specifických pro české zdravotnictví, například v oblasti plánů péče nebo zdravotních záznamů.
+
+5. Bezpečnost a GDPR: Implementace dodatečných bezpečnostních opatření a funkcí pro správu souhlasů pacientů v souladu s GDPR a českými zákony o ochraně osobních údajů.
+
+6. Interoperabilita: Zajištění kompatibility s EHDS (European Health Data Space) a implementace funkcí pro přeshraniční výměnu zdravotnických dat.
+
+7. Vizuální identita: Aplikace vizuální identity DigiMedic na celou aplikaci, včetně barevné palety, typografie a loga.
+
+8. Testování a validace: Důkladné testování všech upravených a nově implementovaných funkcí, zejména s ohledem na specifika českého zdravotnického systému.
+
+Tyto body by měly být zahrnuty do plánu vývoje DigiMedic FHIR Backend.
 
 ## Lokální nasazení a vývoj
 
