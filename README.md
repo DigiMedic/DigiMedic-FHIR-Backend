@@ -45,8 +45,7 @@ Vybudovat bezpečnou a interoperabilní platformu pro výměnu zdravotnických d
   - Poskytuje standardizované rozhraní pro manipulaci a výměnu zdravotnických dat.
 - **Napojení na národní registry**:
   - Použití HL7 FHIR, RESTful API a SOAP API pro komunikaci s eHealth a eRecept.
-- **Synchronizace s nositelnými zařízeními**:
-  - Implementace RESTful API a MQTT pro real-time synchronizaci dat z IOTA zařízení.
+
 
 ### Bezpečnostní opatření
 
