@@ -50,9 +50,12 @@
     "react-dom": "18.2.0",
     "react-router-dom": "6.26.0",
     "rfc6902": "5.1.1",
-    "vite": "5.3.5"
+    "vite": "^5.4.7"
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "express": "4.21.0"
   }
 }

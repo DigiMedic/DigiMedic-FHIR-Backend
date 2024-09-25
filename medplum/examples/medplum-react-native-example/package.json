@@ -19,13 +19,16 @@
     ]
   },
   "dependencies": {
+    "@cyclonedx/cyclonedx-npm": "1.10.0",
     "@expo/metro-runtime": "3.2.1",
     "@medplum/core": "3.2.4",
     "@medplum/expo-polyfills": "3.2.4",
     "@medplum/fhirtypes": "3.2.4",
     "@medplum/react-hooks": "3.2.4",
-    "expo": "51.0.24",
+    "body-parser": "1.20.3",
+    "expo": "^45.0.8",
     "expo-status-bar": "1.12.1",
+    "next": "14.2.13",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-native": "0.74.4",

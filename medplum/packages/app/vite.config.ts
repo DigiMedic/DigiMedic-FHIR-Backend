@@ -36,4 +36,7 @@ export default defineConfig({
       '@medplum/react-hooks': path.resolve(__dirname, '../react-hooks/src'),
     },
   },
+  optimizeDeps: {
+    include: ['@medplum/core', '@medplum/react', '@medplum/react-hooks'],
+  },
 });
