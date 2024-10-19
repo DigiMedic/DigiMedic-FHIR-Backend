@@ -16,337 +16,135 @@ DigiMedic FHIR Backend je komplexní projekt zaměřený na vytvoření pokroči
 6. Podporovat digitální transformaci zdravotnictví v ČR
 7. Upravit vizuální stránku projektu podle vizuální identity DigiMedic
 8. Vytvořit kompletní a uživatelsky přívětivou dokumentaci vycházející z Medplum, ale přizpůsobenou pro DigiMedic
-
-## Klíčové funkce
-
-- FHIR REST API pro standardizovanou manipulaci se zdravotnickými daty
-- Implementace českých FHIR profilů a rozšíření
-- Integrace s českými systémy (eHealth, eRecept, ISIN, NZIS, DRG, DASTA)
-- Plná podpora EHDS (European Health Data Space) a interoperability
-- Bezpečné ukládání dat s šifrováním AES-256
-- Systém notifikací využívající WebSockets a MQTT
-- Autentizace a autorizace pomocí Authentik a OAuth 2.0
-- Lokalizace a internacionalizace pro české prostředí
-- Vizuální přizpůsobení podle identity DigiMedic
-
-## Technologický stack
-
-- Backend: Node.js, Express.js
-- Databáze: PostgreSQL
-- Autentizace: Authentik, OAuth 2.0
-- API: FHIR REST API
-- Real-time komunikace: WebSockets, MQTT
-- Zabezpečení: TLS, AES-256
-- Frontend: React, Next.js
-- Dokumentace: Docusaurus
-
-## Standardy a legislativa
-
-Projekt musí být v plném souladu s následujícími standardy a legislativními požadavky:
-
-- HL7 FHIR R4
-- HL7 Czech Core Resources IG v0.1.0
-- IHE profily relevantní pro české prostředí
-- DASTA (Datový standard Ministerstva zdravotnictví ČR)
-- Standardy EHDS pro evropskou výměnu zdravotnických dat
-- Standardy NCPeH pro přeshraniční výměnu zdravotnických dat
-- GDPR a související české zákony o ochraně osobních údajů
-- Zákon č. 372/2011 Sb., o zdravotních službách
-- Zákon č. 181/2014 Sb., o kybernetické bezpečnosti
-- Vyhláška č. 98/2012 Sb., o zdravotnické dokumentaci
-
-## Struktura projektu
-
-Projekt má následující hlavní komponenty:
-
-- `medplum/`: Hlavní repozitář obsahující upravený kód Medplum platformy
-  - `packages/`: Různé balíčky projektu
-    - `czech-fhir-profiles/`: Implementace českých FHIR profilů
-    - `czech-integrations/`: Konfigurace a integrace s českými zdravotnickými systémy
-    - `digimedic-docs/`: Česká dokumentace projektu
-    - `app/`: Hlavní aplikace
-    - `core/`: Jádro systému
-    - `react/`: React komponenty
-    - `server/`: Serverová část
-  - `examples/`: Ukázkové aplikace a demonstrace funkcí
-    - `foomedical/`: Ukázková aplikace zdravotnického zařízení
-  - `docs/`: Dokumentace (včetně české verze)
-
-## Klíčové funkcionality
-
-1. Správa pacientů a zdravotnických záznamů
-2. Elektronické recepty a e-preskripce
-3. Plánování a správa návštěv
-4. Laboratořní výsledky a diagnostická zobrazování
-5. Komunikace mezi poskytovateli zdravotní péče
-6. Podpora pro telemedicínu
-7. Analýza zdravotnických dat
-8. Integrace s externími systémy a registry
-9. Plná podpora EHDS a přeshraniční výměny dat
-
-## Ukázková aplikace Foo Medical
-
-Foo Medical je ukázková aplikace zdravotnického zařízení, která demonstruje možnosti platformy Medplum. Klíčové vlastnosti:
-
-- Open-source a připravená k použití
-- Využívá Medplum jako backend
-- Obsahuje funkce jako registrace pacientů, zdravotní záznamy, komunikace pacient-lékař, plány péče a plánování pacientů
-- Všechna data jsou reprezentována ve formátu FHIR
-- Navržena pro snadné přizpůsobení potřebám konkrétního zdravotnického zařízení
-
-Struktura aplikace Foo Medical:
-
-- Využívá knihovnu @medplum/react pro integraci s Medplum backendem
-- Používá React Router pro správu navigace
-- Má oddělené stránky pro přihlášení (SignInPage) a registraci (RegisterPage)
-- Obsahuje komponentu LandingPage pro úvodní stránku
-- Po přihlášení používá komponentu Router pro správu navigace v aplikaci
-- Využívá AppShell z knihovny @mantine/core pro základní rozvržení aplikace
-- Implementuje ErrorBoundary a Suspense pro lepší uživatelskou zkušenost a zpracování chyb
-
-### Komponenta pro zdravotní záznamy (HealthRecord)
-
-Klíčové vlastnosti:
-
-- Používá Mantine UI knihovnu pro rozvržení
-- Implementuje boční menu s kategoriemi zdravotních záznamů (laboratorní výsledky, léky, dotazníky, očkování, životní funkce)
-- Využívá React Router pro zobrazení obsahu jednotlivých podstránek
-- Implementuje Suspense a Loading komponentu pro lepší UX
-
-Návrhy na úpravy pro DigiMedic FHIR Backend:
-
-1. Lokalizace do češtiny
-2. Přidání kategorií specifických pro české zdravotnictví
-3. Integrace s českými FHIR profily
-4. Podpora pro elektronické recepty (eRecept)
-5. Integrace s národními registry (ISIN, NZIS)
-6. Sekce pro správu souhlasů pacienta (GDPR)
-
-### Komponenta pro zprávy (Messages)
-
-Klíčové vlastnosti:
-
-- Využívá Medplum pro správu komunikace mezi pacientem a lékařem
-- Používá FHIR resource Communication pro reprezentaci zpráv
-- Implementuje funkce pro odesílání a přijímání zpráv
-- Využívá BaseChat komponentu z @medplum/react
-- Implementuje zpracování chyb a notifikace
-
-Návrhy na úpravy pro DigiMedic FHIR Backend:
-
-1. Lokalizace do češtiny včetně chybových hlášek
-2. Podpora pro české znaky a diakritiku
-3. Přidání typů komunikace specifických pro české zdravotnictví
-4. Integrace s českými FHIR profily pro Communication resource
-5. Implementace dodatečných bezpečnostních opatření (GDPR)
-6. Možnost přikládání souborů nebo odkazů na zdravotní záznamy
-7. Integrace s národními systémy pro zdravotnickou komunikaci
-
-### Komponenta pro plány péče (CarePlanPage)
-
-Klíčové vlastnosti:
-
-- Používá Mantine UI knihovnu pro základní rozvržení
-- Implementuje boční menu s položkou "Action Items"
-- Využívá React Router pro zobrazení obsahu podstránek
-- Implementuje Suspense a Loading komponentu pro lepší UX
-
-Návrhy na úpravy pro DigiMedic FHIR Backend:
-
-1. Lokalizace do češtiny
-2. Rozšíření menu o položky relevantní pro české zdravotnictví:
-   - Dlouhodobé plány péče
-   - Krátkodobé plány péče
-   - Preventivní prohlídky
-   - Rehabilitační plány
-3. Integrace s českými FHIR profily pro plány péče
-4. Podpora pro zobrazení a práci s doporučeními od různých specialistů
-5. Integrace s národními registry a systémy souvisejícími s plány péče
-6. Sekce pro správu souhlasů pacienta s plány péče (GDPR)
-7. Funkcionalita pro sdílení plánů péče mezi různými poskytovateli zdravotní péče
-
-## Hlavní body pro přizpůsobení Foo Medical pro DigiMedic FHIR Backend
-
-1. Lokalizace: Překlad všech komponent do češtiny, včetně uživatelského rozhraní, chybových hlášek a notifikací.
-
-2. Integrace s českými FHIR profily: Implementace a integrace českých FHIR profilů pro všechny relevantní zdroje dat (pacienti, zdravotní záznamy, komunikace, plány péče atd.).
-
-3. Integrace s národními systémy: Implementace rozhraní pro integraci s klíčovými českými zdravotnickými systémy jako eRecept, ISIN, NZIS a další.
-
-4. Rozšíření funkcionality: Přidání nových funkcí a kategorií specifických pro české zdravotnictví, například v oblasti plánů péče nebo zdravotních záznamů.
-
-5. Bezpečnost a GDPR: Implementace dodatečných bezpečnostních opatření a funkcí pro správu souhlasů pacientů v souladu s GDPR a českými zákony o ochraně osobních údajů.
-
-6. Interoperabilita: Zajištění kompatibility s EHDS (European Health Data Space) a implementace funkcí pro přeshraniční výměnu zdravotnických dat.
-
-7. Vizuální identita: Aplikace vizuální identity DigiMedic na celou aplikaci, včetně barevné palety, typografie a loga.
-
-8. Testování a validace: Důkladné testování všech upravených a nově implementovaných funkcí, zejména s ohledem na specifika českého zdravotnického systému.
-
-Tyto body by měly být zahrnuty do plánu vývoje DigiMedic FHIR Backend.
-
-## Lokální nasazení a vývoj
-
-Pro lokální nasazení a vývoj projektu následujte tyto kroky:
-
-### Prerekvizity
-
-1. Git
-2. Node.js (verze 18+ požadována, verze 20+ doporučena)
-3. Docker
-
-### Instalace
-
-1. Naklonujte repozitář DigiMedic FHIR Backend
-2. V kořenovém adresáři spusťte `npm ci` pro instalaci závislostí
-
-### Sestavení
-
-Použijte Turborepo pro sestavení všech balíčků:
-
-```sh
-npm run build:fast
-```
-
-### Spuštění základních služeb
-
-Použijte Docker Compose pro spuštění PostgreSQL a Redis:
-
-```sh
-docker-compose up
-```
-
-### Spuštění serverů
-
-1. Spusťte DigiMedic FHIR Backend API server:
-
-```sh
-cd packages/server
-npm run dev
-```
-
-2. Spusťte DigiMedic FHIR Backend Web App:
-
-```sh
-cd packages/app
-npm run dev
-```
-
-Aplikace bude dostupná na http://localhost:3000/
-
-Výchozí přihlašovací údaje budou poskytnuty v separátním, bezpečném kanálu.
-
-## Dokumentace
-
-Projekt využívá Docusaurus pro správu a generování dokumentace. Dokumentace je umístěna v adresáři `digimedic-docs/`. 
-
-### Struktura dokumentace
-
-- `digimedic-docs/`
-  - `docs/`: Obsahuje hlavní dokumentační soubory v Markdown formátu
-    - `uvod.md`: Úvodní stránka dokumentace
-    - `instalace-a-nastaveni.md`: Pokyny pro instalaci a nastavení
-    - `zakladni-koncepty.md`: Vysvětlení základních konceptů projektu
-    - `api-reference.md`: Reference k API
-    - `priklady-pouziti.md`: Příklady použití DigiMedic FHIR Backend
-    - `vizualni-identita.md`: Informace o vizuální identitě projektu
-  - `src/`: Zdrojové soubory pro React komponenty a CSS
-    - `css/`: Obsahuje soubory s CSS styly
-    - `components/`: React komponenty používané v dokumentaci
-  - `static/`: Statické soubory jako obrázky a ikony
-    - `img/`: Adresář s obrázky a ikonami, včetně loga a faviconu
-  - `docusaurus.config.ts`: Konfigurační soubor pro Docusaurus
-  - `sidebars.ts`: Konfigurace postranního panelu dokumentace
-
-### Spuštění dokumentace lokálně
-
-Pro spuštění dokumentace lokálně:
-
-1. Přejděte do adresáře dokumentace:
-   ```sh
-   cd digimedic-docs
-   ```
-
-2. Nainstalujte závislosti:
-   ```sh
-   npm install
-   ```
-
-3. Spusťte vývojový server:
-   ```sh
-   npm start
-   ```
-
-Dokumentace bude dostupná na adrese http://localhost:3000
-
-### Přizpůsobení pro DigiMedic FHIR Backend
-
-Dokumentace byla upravena tak, aby odrážela vizuální identitu DigiMedic:
-
-- Přizpůsobení barevné palety a typografie v `src/css/custom.css`
-- Použití loga DigiMedic a faviconu v `static/img/`
-- Vytvoření vlastních SVG ikon pro klíčové funkce v `static/img/`
-- Aktualizace hlavní stránky a navigace v `src/pages/index.tsx`
-- Přidání stránky s informacemi o vizuální identitě projektu v `docs/vizualni-identita.md`
-
-## Vizuální identita
-
-Projekt DigiMedic FHIR Backend je vizuálně upraven podle [Brand manuálu DigiMedic](https://github.com/DigiMedic/Brand-manual-DigiMedic). Klíčové aspekty zahrnují:
-
-### Logo
-
-- Primární logo: Černé logo s nápisem "DigiMedic"
-- Varianta s modrým symbolem: Logo s modrým symbolem srdce v bublině
-- Symbol (Favicon): Modré srdce v bublině
-- Dlouhá verze: Logo s nápisem "DigiMedic - Digitální Páteř Českého Zdravotnictví"
-
-### Barevná paleta
-
-| Barva | Hex kód | Použití |
-|-------|---------|---------|
-| Tmavě modrá | #1B4D6A | Hlavní barva pro logo a důležité prvky |
-| Středně modrá | #5B8A9A | Sekundární prvky a zvýraznění |
-| Světle modrá | #5BA2C2 | Doplňkové prvky a pozadí |
-| Velmi světle modrá | #A8D4E1 | Jemné akcenty a pozadí |
-| Nejsvětlejší modrá | #E7F5F8 | Velmi jemné pozadí a oddělovače |
-
-### Typografie
-
-- Nadpisy a logo: Space Bold Regular
-- Zvýraznění a podnadpisy: Space Bold Semibold
-- Hlavní text: Raleway Regular
-- Alternativní font pro delší texty: Open Sans
-
-## Další důležité informace
-
-- Projekt je založen na platformě Medplum, ale je výrazně přizpůsoben a rozšířen pro potřeby českého zdravotnictví a DigiMedic
-- Důraz je kladen na bezpečnost, ochranu osobních údajů a plný soulad s GDPR
-- Probíhá úzká spolupráce s českými zdravotnickými institucemi a odborníky
-- Projekt musí projít certifikací pro použití v českém zdravotnictví
-- Součástí projektu jsou různé demo aplikace pro ukázku funkcionalit (např. chat, plánování, příjem pacientů)
-- Cílem je vytvořit produkt, který bude možné propagovat jako DigiMedic FHIR Backend
-
-## Vývojové prostředí
-
-- Git pro správu verzí
-- Node.js a npm pro správu závislostí
-- Docker pro kontejnerizaci
-- CI/CD pipeline (pravděpodobně GitHub Actions)
-- Testovací nástroje: Jest, Vitest
-- Docusaurus pro správu a generování dokumentace
-
-## Aktuální stav a další kroky
-
-1. Analýza požadavků a specifikací pro českou implementaci a EHDS
-2. Důkladné přizpůsobování a rozšiřování Medplum platformy
-3. Implementace českých FHIR profilů a rozšíření
-4. Integrace s českými zdravotnickými systémy a EHDS
-5. Vývoj demo aplikací a ukázkových případů použití
-6. Aplikace vizuální identity DigiMedic
-7. Vytvoření kompletní, uživatelsky přívětivé dokumentace
-8. Testování a validace
-9. Lokalizace a překlad
-10. Certifikace a nasazení
-11. Příprava marketingových materiálů pro propagaci DigiMedic FHIR Backend
-
-Tento knowledge base bude průběžně aktualizován s novými informacemi a pokrokem v projektu. Cílem je vytvořit komplexní, bezchybně fungující a plně přizpůsobený produkt DigiMedic FHIR Backend, který bude splňovat všechny požadavky českého zdravotnictví a EHDS.
+Jistě, rád prozkoumám dokumentaci Medplum, abychom lépe pochopili základy, na kterých DigiMedic FHIR Backend staví. Zde je shrnutí klíčových bodů z dokumentace Medplum:
+
+1. Základní koncept:
+   Medplum je "headless EHR" (Electronic Health Record) systém. To znamená, že poskytuje backend infrastrukturu a API pro zdravotnické aplikace, ale nemá vlastní uživatelské rozhraní.
+
+2. FHIR Standard:
+   Medplum je založen na FHIR (Fast Healthcare Interoperability Resources) standardu, konkrétně verzi R4. To zajišťuje interoperabilitu a standardizaci dat napříč různými zdravotnickými systémy.
+
+3. Klíčové komponenty:
+   - FHIR API: RESTful API pro manipulaci se zdravotnickými daty
+   - Autentizace a autorizace: Podporuje OAuth 2.0 a SMART on FHIR
+   - FHIR Datastore: Úložiště pro FHIR zdroje
+   - Bots: Automatizované skripty pro zpracování dat a workflow
+   - Subscriptions: Systém pro real-time notifikace o změnách dat
+
+4. Bezpečnost:
+   Medplum klade velký důraz na bezpečnost, včetně šifrování dat, bezpečné autentizace a autorizace, a auditních logů.
+
+5. Integrace:
+   Podporuje integraci s různými zdravotnickými systémy, včetně laboratoří, EHR systémů, PACS a dalších.
+
+6. Customizace:
+   Medplum je navržen tak, aby byl snadno přizpůsobitelný pro různé use-case, včetně vytváření vlastních FHIR profilů a rozšíření.
+
+7. SDK a nástroje:
+   Poskytuje SDK pro TypeScript/JavaScript a React komponenty pro snadný vývoj frontend aplikací.
+
+8. Dokumentace a příklady:
+   Medplum nabízí rozsáhlou dokumentaci a příklady implementace, včetně ukázkové aplikace "Foo Medical".
+
+9. Open Source:
+   Medplum je open-source projekt, což umožňuje komunitě přispívat k jeho rozvoji a přizpůsobovat ho pro specifické potřeby.
+
+10. Compliance:
+    Medplum je navržen s ohledem na různé zdravotnické standardy a regulace, včetně HIPAA.
+
+11. GraphQL podpora:
+    Kromě REST API Medplum také podporuje GraphQL pro flexibilnější dotazování na data.
+
+12. Rozšiřitelnost:
+    Medplum umožňuje vytváření vlastních FHIR operací a rozšíření pro specifické potřeby implementace.
+
+Pro projekt DigiMedic FHIR Backend to znamená, že máme solidní základ, na kterém můžeme stavět. Budeme muset:
+
+1. Přizpůsobit FHIR profily pro české zdravotnictví.
+2. Implementovat integraci s českými systémy jako eRecept, ISIN, NZIS.
+3. Zajistit soulad s českými zákony a regulacemi.
+4. Lokalizovat dokumentaci a uživatelské rozhraní do češtiny.
+5. Rozšířit bezpečnostní opatření pro splnění českých a EU norem.
+6. Vytvořit specifické boty a automatizace pro české zdravotnické procesy.
+7. Přizpůsobit autentizační a autorizační systém pro české poskytovatele identity.
+
+Toto prozkoumání Medplum dokumentace nám poskytuje jasný obraz o tom, co máme k dispozici a co budeme muset upravit nebo doplnit pro potřeby DigiMedic FHIR Backend.
+Po důkladné analýze Medplum, požadavků projektu DigiMedic FHIR Backend a českého zdravotnického prostředí navrhuji následující podrobný plán implementace:
+
+1. Fáze přípravy a analýzy (2-3 měsíce)
+   a) Detailní analýza českých zdravotnických standardů a legislativy
+   b) Mapování rozdílů mezi Medplum FHIR implementací a českými požadavky
+   c) Konzultace s českými zdravotnickými institucemi (ÚZIS, SÚKL)
+   d) Definice konkrétních use-case pro české prostředí
+   e) Vytvoření detailní architektury systému
+
+2. Fáze vývoje základní infrastruktury (3-4 měsíce)
+   a) Forking a přizpůsobení Medplum repozitáře
+   b) Implementace českých FHIR profilů
+      - CZ_Patient, CZ_Practitioner, CZ_Organization, CZ_Medication
+   c) Rozšíření FHIR datastore o české specifické atributy
+   d) Implementace českých terminologií a číselníků
+   e) Přizpůsobení autentizačního systému pro české poskytovatele identity (NIA)
+
+3. Fáze integrace s českými systémy (4-5 měsíců)
+   a) Implementace rozhraní pro eRecept
+   b) Integrace s ISIN (Informační systém infekčních nemocí)
+   c) Napojení na NZIS (Národní zdravotnický informační systém)
+   d) Implementace rozhraní pro DRG (Diagnosis Related Group)
+   e) Podpora pro DASTA (Datový standard MZ ČR)
+
+4. Fáze vývoje specifických funkcí (3-4 měsíce)
+   a) Implementace českých zdravotnických workflow pomocí Medplum Bots
+   b) Vytvoření specifických FHIR operací pro české prostředí
+   c) Implementace systému pro správu souhlasů pacientů (GDPR)
+   d) Vývoj modulu pro anonymizaci dat
+   e) Implementace rozhraní pro EHDS (European Health Data Space)
+
+5. Fáze bezpečnosti a compliance (2-3 měsíce)
+   a) Implementace dodatečných bezpečnostních opatření
+   b) Audit a optimalizace šifrování dat
+   c) Implementace logování a auditních záznamů dle českých požadavků
+   d) Zajištění souladu s českými zákony o kybernetické bezpečnosti
+
+6. Fáze lokalizace a UI/UX (2-3 měsíce)
+   a) Překlad uživatelského rozhraní do češtiny
+   b) Přizpůsobení UI pro české uživatele (formáty dat, měny, atd.)
+   c) Implementace české dokumentace
+   d) Vytvoření českých vzorových aplikací a příkladů použití
+
+7. Fáze testování a validace (3-4 měsíce)
+   a) Vývoj komplexní testovací sady pro české prostředí
+   b) Provedení penetračních testů
+   c) Uživatelské testování s českými zdravotníky
+   d) Validace souladu s českými standardy a legislativou
+   e) Zátěžové testování
+
+8. Fáze pilotního nasazení (2-3 měsíce)
+   a) Výběr pilotních zdravotnických zařízení
+   b) Nasazení systému v testovacím prostředí
+   c) Školení uživatelů
+   d) Sběr a analýza zpětné vazby
+   e) Iterativní vylepšování na základě zpětné vazby
+
+9. Fáze certifikace a finalizace (2-3 měsíce)
+   a) Příprava dokumentace pro certifikaci
+   b) Proces certifikace pro použití v českém zdravotnictví
+   c) Finální úpravy na základě výsledků certifikace
+   d) Příprava produkčního prostředí
+
+10. Fáze produkčního nasazení a podpory (ongoing)
+    a) Plné produkční nasazení
+    b) Ustanovení týmu pro podporu a údržbu
+    c) Pravidelné aktualizace a vylepšení
+    d) Kontinuální sledování změn v legislativě a standardech
+
+Celková odhadovaná doba implementace: 18-24 měsíců
+
+Dodatečné poznámky:
+1. Průběžná komunikace s českými zdravotnickými autoritami je klíčová.
+2. Agilní přístup k vývoji umožní flexibilní reakce na změny požadavků.
+3. Důraz na dokumentaci a školení uživatelů je zásadní pro úspěšnou adopci.
+4. Pravidelné bezpečnostní audity by měly být součástí dlouhodobého plánu.
+5. Plán počítá s paralelním vývojem některých fází pro optimalizaci času.
+
+Tento plán poskytuje komplexní přístup k implementaci DigiMedic FHIR Backend, zohledňující specifika českého zdravotnictví a stavící na solidních základech platformy Medplum.
