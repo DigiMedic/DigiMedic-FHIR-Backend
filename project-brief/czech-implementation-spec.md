@@ -101,18 +101,18 @@ Implementace musí být v souladu s následujícími standardy a legislativními
 - Nedostatek expertízy v českém zdravotnickém systému: Spolupráce s lokálními experty a institucemi
 
 ## 10. Plán implementace
-1. Fáze přípravy a analýzy (2-3 měsíce)
-2. Fáze vývoje základní infrastruktury (3-4 měsíce)
-3. Fáze integrace s českými systémy (4-5 měsíců)
-4. Fáze vývoje specifických funkcí (3-4 měsíce)
-5. Fáze bezpečnosti a compliance (2-3 měsíce)
-6. Fáze lokalizace a UI/UX (2-3 měsíce)
-7. Fáze testování a validace (3-4 měsíce)
-8. Fáze pilotního nasazení (2-3 měsíce)
-9. Fáze certifikace a finalizace (2-3 měsíce)
+1. Fáze přípravy a analýzy
+2. Fáze vývoje základní infrastruktury
+3. Fáze integrace s českými systémy
+4. Fáze vývoje specifických funkcí
+5. Fáze bezpečnosti a compliance
+6. Fáze lokalizace a UI/UX
+7. Fáze testování a validace
+8. Fáze pilotního nasazení
+9. Fáze certifikace a finalizace
 10. Fáze produkčního nasazení a podpory (ongoing)
 
-Celková odhadovaná doba implementace: 18-24 měsíců
+Celková doba implementace bude záviset na mnoha faktorech a bude průběžně upřesňována během projektu.
 
 ## 11. Další kroky
 - Konzultace s českými odborníky na zdravotnickou informatiku
