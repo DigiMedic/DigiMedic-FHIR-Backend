@@ -1,0 +1,58 @@
+{
+  "compilerOptions": {
+    /* Základní nastavení */
+    "target": "es2022",
+    "module": "node16",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
+    "moduleResolution": "node16",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    
+    /* Přísná typová kontrola */
+    "strict": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "useUnknownInCatchVariables": true,
+    
+    /* Další kontroly */
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    
+    /* Optimalizace pro zdravotnické aplikace */
+    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": true,
+    "skipLibCheck": true,
+    
+    /* Nastavení pro monorepo */
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "incremental": true,
+    "baseUrl": ".",
+    "paths": {
+      "@digimedic/cz-profiles": ["packages/cz-profiles/src"],
+      "@digimedic/cz-integrations": ["packages/cz-integrations/src"],
+      "@digimedic/cz-i18n": ["packages/cz-i18n/src"],
+      "@digimedic/server": ["packages/server/src"],
+      "@digimedic/app": ["packages/app/src"]
+    }
+  },
+  "exclude": ["**/node_modules", "**/dist", "**/build", "**/.next"],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
+  }
+}

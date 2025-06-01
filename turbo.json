@@ -1,0 +1,62 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**", "build/**"],
+      "cache": true,
+      "env": ["NODE_ENV", "MEDPLUM_BASE_URL", "FHIR_SERVER_URL"]
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "outputs": ["coverage/**"],
+      "cache": true,
+      "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
+    },
+    "lint": {
+      "outputs": [],
+      "cache": true
+    },
+    "dev": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    },
+    "validate-profiles": {
+      "dependsOn": ["cz-profiles#build"],
+      "cache": true,
+      "outputs": ["validation-results/**"]
+    },
+    "extract-i18n": {
+      "dependsOn": [],
+      "outputs": ["packages/cz-i18n/src/locales/**"],
+      "cache": true
+    },
+    "cz-profiles#build": {
+      "dependsOn": [],
+      "outputs": ["dist/**"],
+      "cache": true
+    },
+    "cz-integrations#build": {
+      "dependsOn": ["cz-profiles#build"],
+      "outputs": ["dist/**"],
+      "cache": true
+    },
+    "server#build": {
+      "dependsOn": ["cz-profiles#build", "cz-integrations#build", "cz-i18n#build"],
+      "outputs": ["dist/**"],
+      "cache": true,
+      "env": ["NODE_ENV", "MEDPLUM_CLIENT_ID", "MEDPLUM_CLIENT_SECRET"]
+    },
+    "app#build": {
+      "dependsOn": ["cz-profiles#build", "cz-i18n#build"],
+      "outputs": ["dist/**", ".next/**"],
+      "cache": true,
+      "env": ["NODE_ENV", "NEXT_PUBLIC_MEDPLUM_BASE_URL"]
+    }
+  }
+}

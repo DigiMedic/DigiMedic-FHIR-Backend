@@ -1,0 +1,61 @@
+{
+  "name": "@digimedic/cz-i18n",
+  "version": "0.1.0",
+  "description": "Lokalizační balík pro DigiMedic FHIR Backend (čeština)",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    },
+    "./locales": {
+      "require": "./dist/locales/index.js",
+      "import": "./dist/locales/index.mjs",
+      "types": "./dist/locales/index.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts src/locales/index.ts --format cjs,esm --dts --clean",
+    "dev": "tsup src/index.ts src/locales/index.ts --format cjs,esm --dts --watch",
+    "lint": "eslint src --ext .ts",
+    "test": "jest",
+    "clean": "rimraf dist",
+    "extract-i18n": "i18next-scanner --config ../../i18next-scanner.config.js"
+  },
+  "dependencies": {
+    "i18next": "^23.7.11",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "i18next-http-backend": "^2.3.1"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.11",
+    "@types/node": "^20.10.5",
+    "jest": "^29.7.0",
+    "rimraf": "^5.0.5",
+    "ts-jest": "^29.1.1",
+    "tsup": "^8.0.1",
+    "typescript": "^5.3.3"
+  },
+  "keywords": [
+    "i18n",
+    "localization",
+    "czech",
+    "digimedic",
+    "healthcare"
+  ],
+  "author": "DigiMedic",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DigiMedic/DigiMedic-FHIR-Backend",
+    "directory": "packages/cz-i18n"
+  }
+}
